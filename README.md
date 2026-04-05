@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ListHome — Zero-Broker Apartment Rental Discovery
+
+A WhatsApp-first rental discovery website for urban renters in Indian metros. Browse verified apartments directly from owners — no broker fees.
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Animations**: Framer Motion
+- **Data**: Static JSON (dummy listings for v0)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- pnpm (`npm install -g pnpm`)
+
+### Local Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Start development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm build
+pnpm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+├── app/                    # Next.js App Router pages & layouts
+│   ├── layout.tsx          # Root layout with metadata
+│   ├── page.tsx            # Homepage
+│   └── globals.css         # Global styles + Tailwind + shadcn/ui CSS variables
+├── components/
+│   └── ui/                 # shadcn/ui base components
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── badge.tsx
+│       └── input.tsx
+├── data/                   # Static JSON data (dummy listings)
+├── lib/
+│   └── utils.ts            # cn() helper for class merging
+├── public/                 # Static assets
+└── components.json         # shadcn/ui configuration
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Pages (v0 Scope)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage — hero search + featured listings |
+| `/listings` | Browse all listings with filters |
+| `/listings/[id]` | Listing detail with WhatsApp CTA |
+| `/about` | How It Works / About page |
 
-## Deploy on Vercel
+## Adding shadcn/ui Components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+PNPM_CONFIG_REGISTRY=https://registry.npmjs.org pnpm dlx shadcn-ui@latest add dialog
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment Variables
+
+No environment variables required for v0 (static data, no backend).
