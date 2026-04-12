@@ -12,7 +12,7 @@ function furnishingLabel(f: Listing["furnishing"]) {
 
 export default function ListingCard({ listing }: { listing: Listing }) {
   const waMessage = encodeURIComponent(
-    `Hi, I saw your listing for "${listing.title}" on ListHome. Is it still available?`
+    `Hi, I saw your listing for "${listing.title}" on Zelvo. Is it still available?`
   );
   const waUrl = `https://wa.me/${listing.ownerWhatsApp}?text=${waMessage}`;
 

@@ -44,7 +44,7 @@ export default function Home() {
           <div>
             <h2 className="text-2xl font-bold">Featured Listings</h2>
             <p className="text-muted-foreground text-sm mt-1">
-              Handpicked homes across top cities
+              Handpicked homes across Bangalore
             </p>
           </div>
           <Button variant="outline" asChild>
@@ -58,7 +58,7 @@ export default function Home() {
         </div>
         <div className="text-center mt-10">
           <Button asChild size="lg">
-            <Link href="/listings">Browse All 25 Listings</Link>
+            <Link href="/listings">Browse All 10 Listings</Link>
           </Button>
         </div>
       </section>
@@ -66,7 +66,7 @@ export default function Home() {
       {/* How it works teaser */}
       <section className="bg-gray-50 py-14 px-4">
         <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-bold mb-3">How ListHome Works</h2>
+          <h2 className="text-2xl font-bold mb-3">How Zelvo Works</h2>
           <p className="text-muted-foreground mb-6">
             Find and rent a home in 3 simple steps — no broker needed.
           </p>

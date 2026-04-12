@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-bold text-xl text-primary">
           <Home className="h-5 w-5" />
-          <span>ListHome</span>
+          <span>Zelvo</span>
         </Link>
 
         {/* Desktop nav */}

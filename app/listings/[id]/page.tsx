@@ -53,7 +53,7 @@ export default function ListingDetailPage({
   if (!listing) notFound();
 
   const waMessage = encodeURIComponent(
-    `Hi ${listing.ownerName}, I saw your listing for "${listing.title}" on ListHome. Is it still available?`
+    `Hi ${listing.ownerName}, I saw your listing for "${listing.title}" on Zelvo. Is it still available?`
   );
   const waUrl = `https://wa.me/${listing.ownerWhatsApp}?text=${waMessage}`;
 

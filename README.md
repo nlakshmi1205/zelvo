@@ -1,6 +1,6 @@
-# ListHome — Zero-Broker Apartment Rental Discovery
+# Zelvo — Zero-Broker Apartment Rental Discovery in Bangalore
 
-A WhatsApp-first rental discovery website for urban renters in Indian metros. Browse verified apartments directly from owners — no broker fees.
+A WhatsApp-first rental discovery website for renters in Bangalore. Browse verified apartments directly from owners — no broker fees.
 
 ## Tech Stack
 

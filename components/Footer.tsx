@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Home } from "lucide-react";
 
 const cityLinks = [
-  { label: "Mumbai Listings", href: "/listings?city=Mumbai" },
-  { label: "Bangalore Listings", href: "/listings?city=Bangalore" },
-  { label: "Hyderabad Listings", href: "/listings?city=Hyderabad" },
+  { label: "Koramangala Listings", href: "/listings?locality=Koramangala" },
+  { label: "HSR Layout Listings", href: "/listings?locality=HSR+Layout" },
+  { label: "Indiranagar Listings", href: "/listings?locality=Indiranagar" },
 ];
 
 const siteLinks = [
@@ -20,10 +20,10 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2 font-bold text-lg text-primary mb-3">
               <Home className="h-5 w-5" />
-              <span>ListHome</span>
+              <span>Zelvo</span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Zero-broker rentals across India. Connect directly with owners on
+              Zero-broker rentals in Bangalore. Connect directly with owners on
               WhatsApp.
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t mt-8 pt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} ListHome — Zero broker fees, real homes.
+          © {new Date().getFullYear()} Zelvo — Zero broker fees, real homes.
         </div>
       </div>
     </footer>

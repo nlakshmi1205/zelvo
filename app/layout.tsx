@@ -8,17 +8,17 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "ListHome — Zero-Broker Apartment Rentals",
-    template: "%s | ListHome",
+    default: "Zelvo — Zero-Broker Apartment Rentals in Bangalore",
+    template: "%s | Zelvo",
   },
   description:
-    "Discover verified apartments directly from owners. No broker fees. Browse listings across Mumbai, Bangalore & Hyderabad and connect via WhatsApp.",
+    "Discover verified apartments directly from owners in Bangalore. No broker fees. Browse listings in Koramangala, HSR Layout, Indiranagar and more.",
   openGraph: {
     type: "website",
-    siteName: "ListHome",
-    title: "ListHome — Zero-Broker Apartment Rentals",
+    siteName: "Zelvo",
+    title: "Zelvo — Zero-Broker Apartment Rentals in Bangalore",
     description:
-      "Browse verified rentals across India. Connect directly with owners. Zero broker fees.",
+      "Browse verified rentals in Bangalore. Connect directly with owners. Zero broker fees.",
   },
 };
 

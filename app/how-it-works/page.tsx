@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "How It Works",
   description:
-    "ListHome makes renting easy — browse verified listings, WhatsApp the owner directly, and move in without paying a single rupee to a broker.",
+    "Zelvo makes renting easy — browse verified listings, WhatsApp the owner directly, and move in without paying a single rupee to a broker.",
 };
 
 const steps = [
@@ -14,7 +14,7 @@ const steps = [
     icon: Search,
     number: "01",
     title: "Browse Verified Listings",
-    desc: "All listings on ListHome are posted directly by property owners — no brokers, no fake duplicates. Filter by city, locality, BHK, budget, and furnishing to find your match.",
+    desc: "All listings on Zelvo are posted directly by property owners — no brokers, no fake duplicates. Filter by city, locality, BHK, budget, and furnishing to find your match.",
     color: "bg-blue-50 text-blue-600",
   },
   {
@@ -35,7 +35,7 @@ const steps = [
 
 const faqs = [
   {
-    q: "Is ListHome really free for renters?",
+    q: "Is Zelvo really free for renters?",
     a: "Yes, 100%. We never charge renters any fee. Browse, contact owners, and move in — all at zero cost to you.",
   },
   {
@@ -44,14 +44,14 @@ const faqs = [
   },
   {
     q: "What cities do you cover?",
-    a: "We currently have verified listings in Mumbai, Bangalore, and Hyderabad. More cities are coming soon. If you're a property owner in another city, reach out to us on WhatsApp.",
+    a: "We currently have verified listings across Bangalore — Koramangala, HSR Layout, Indiranagar, and more. More localities are coming soon. If you're a property owner in Bangalore, reach out to us on WhatsApp.",
   },
   {
     q: "What are SmartLocks?",
     a: "SmartLocks are our upcoming Stage 2 feature — digital locks on properties that allow you to self-schedule and self-tour homes without waiting for the owner to be available. Coming soon!",
   },
   {
-    q: "Can I list my property on ListHome?",
+    q: "Can I list my property on Zelvo?",
     a: "Yes! If you are a property owner looking to rent without paying broker commissions, we want to work with you. Tap 'Contact on WhatsApp' on any listing to reach our team.",
   },
 ];
@@ -69,7 +69,7 @@ export default function HowItWorksPage() {
             Rent a Home Without Paying a Broker
           </h1>
           <p className="text-muted-foreground text-base max-w-xl mx-auto">
-            ListHome puts you in direct contact with property owners. No
+            Zelvo puts you in direct contact with property owners. No
             middlemen, no commissions, no fake listings.
           </p>
         </div>
@@ -134,8 +134,7 @@ export default function HowItWorksPage() {
             Ready to Find Your Next Home?
           </h2>
           <p className="text-blue-100 mb-6">
-            Browse 25+ verified listings across Mumbai, Bangalore &amp;
-            Hyderabad. Zero broker, zero fees.
+            Browse 10+ verified listings across Bangalore. Zero broker, zero fees.
           </p>
           <Button
             asChild
