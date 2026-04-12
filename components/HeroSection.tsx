@@ -23,8 +23,7 @@ export default function HeroSection() {
             <span className="text-yellow-300">Zero Broker Fees</span>
           </h1>
           <p className="text-lg text-blue-100 mb-8 max-w-xl mx-auto">
-            Browse verified rental listings across Mumbai, Bangalore &amp;
-            Hyderabad. Connect directly with owners via WhatsApp.
+            Browse verified rental listings across Bangalore. Connect directly with owners via WhatsApp.
           </p>
           <form
             action="/listings"
@@ -35,7 +34,7 @@ export default function HeroSection() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
                 name="q"
-                placeholder="Search by locality or city..."
+                placeholder="Search by tech park or area..."
                 className="pl-9 bg-white text-foreground border-0 h-11"
               />
             </div>

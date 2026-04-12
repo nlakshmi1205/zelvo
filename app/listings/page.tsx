@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { listings, cities, localities } from "@/data/listings";
+import { listings, techParks } from "@/data/listings";
 import ListingCard from "@/components/ListingCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -8,12 +8,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Browse Listings",
   description:
-    "Browse verified zero-broker rental listings across Mumbai, Bangalore, and Hyderabad. Filter by city, BHK, price, and furnishing.",
+    "Browse verified zero-broker rental listings in Bangalore — Koramangala, HSR Layout, Indiranagar, and more. Filter by locality, BHK, price, and furnishing.",
 };
 
 interface SearchParams {
-  city?: string;
-  locality?: string;
+  techPark?: string;
   bedrooms?: string;
   minPrice?: string;
   maxPrice?: string;
@@ -29,13 +28,11 @@ function filterAndSort(params: SearchParams) {
     const q = params.q.toLowerCase();
     results = results.filter(
       (l) =>
-        l.city.toLowerCase().includes(q) ||
         l.locality.toLowerCase().includes(q) ||
         l.title.toLowerCase().includes(q)
     );
   }
-  if (params.city) results = results.filter((l) => l.city === params.city);
-  if (params.locality) results = results.filter((l) => l.locality === params.locality);
+  if (params.techPark) results = results.filter((l) => l.locality === params.techPark);
   if (params.bedrooms) results = results.filter((l) => l.bedrooms === Number(params.bedrooms));
   if (params.minPrice) results = results.filter((l) => l.price >= Number(params.minPrice));
   if (params.maxPrice) results = results.filter((l) => l.price <= Number(params.maxPrice));
@@ -64,7 +61,7 @@ export default function ListingsPage({
           <h1 className="text-2xl font-bold mb-1">Browse Listings</h1>
           <p className="text-muted-foreground text-sm">
             {results.length} listing{results.length !== 1 ? "s" : ""} found
-            {searchParams.city ? ` in ${searchParams.city}` : ""}
+            {searchParams.techPark ? ` near ${searchParams.techPark}` : ""}
           </p>
         </div>
       </div>
@@ -88,35 +85,18 @@ export default function ListingsPage({
                 </select>
               </div>
 
-              {/* City */}
+              {/* Tech Park */}
               <div>
-                <label className="text-sm font-semibold block mb-1.5">City</label>
+                <label className="text-sm font-semibold block mb-1.5">Tech Park / Area</label>
                 <select
-                  name="city"
-                  defaultValue={searchParams.city ?? ""}
+                  name="techPark"
+                  defaultValue={searchParams.techPark ?? ""}
                   className="w-full border rounded-md px-3 py-2 text-sm bg-white"
                 >
-                  <option value="">All Cities</option>
-                  {cities.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Locality */}
-              <div>
-                <label className="text-sm font-semibold block mb-1.5">Locality</label>
-                <select
-                  name="locality"
-                  defaultValue={searchParams.locality ?? ""}
-                  className="w-full border rounded-md px-3 py-2 text-sm bg-white"
-                >
-                  <option value="">All Localities</option>
-                  {localities.map((l) => (
-                    <option key={l} value={l}>
-                      {l}
+                  <option value="">All Areas</option>
+                  {techParks.map((tp) => (
+                    <option key={tp} value={tp}>
+                      {tp}
                     </option>
                   ))}
                 </select>
