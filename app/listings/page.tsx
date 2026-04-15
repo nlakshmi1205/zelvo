@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { listings, techParks } from "@/data/listings";
 import ListingCard from "@/components/ListingCard";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -50,9 +49,6 @@ export default function ListingsPage({
   searchParams: SearchParams;
 }) {
   const results = filterAndSort(searchParams);
-  const activeFilters = Object.entries(searchParams).filter(
-    ([k, v]) => v && k !== "sort"
-  );
 
   return (
     <main className="min-h-screen">
@@ -163,17 +159,6 @@ export default function ListingsPage({
 
           {/* Results */}
           <div className="flex-1">
-            {/* Active filters */}
-            {activeFilters.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {activeFilters.map(([key, value]) => (
-                  <Badge key={key} variant="secondary" className="text-xs">
-                    {key}: {value}
-                  </Badge>
-                ))}
-              </div>
-            )}
-
             {results.length === 0 ? (
               <div className="text-center py-16">
                 <p className="text-muted-foreground mb-4">
