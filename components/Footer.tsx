@@ -5,12 +5,6 @@ const areaLinks = [
   { label: "Koramangala", href: "/listings?techPark=Koramangala" },
   { label: "HSR Layout", href: "/listings?techPark=HSR+Layout" },
   { label: "Indiranagar", href: "/listings?techPark=Indiranagar" },
-  { label: "Whitefield / ITPL", href: "/listings?techPark=Whitefield+%2F+ITPL" },
-  { label: "Electronic City", href: "/listings?techPark=Electronic+City" },
-  { label: "Marathahalli", href: "/listings?techPark=Marathahalli" },
-  { label: "Sarjapur Road", href: "/listings?techPark=Sarjapur+Road" },
-  { label: "Bellandur", href: "/listings?techPark=Bellandur" },
-  { label: "Hebbal / Manyata", href: "/listings?techPark=Hebbal+%2F+Manyata" },
 ];
 
 const siteLinks = [
