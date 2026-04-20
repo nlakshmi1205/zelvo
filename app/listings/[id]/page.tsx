@@ -14,7 +14,12 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import dynamic from "next/dynamic";
 import { listings, getListingById } from "@/data/listings";
+
+const OwnerTenantMatch = dynamic(() => import("@/components/OwnerTenantMatch"), {
+  ssr: false,
+});
 
 export async function generateStaticParams() {
   return listings.map((l) => ({ id: l.id }));
@@ -175,6 +180,12 @@ export default function ListingDetailPage({
                 ))}
               </div>
             </div>
+
+            {/* Owner preferences & tenant match */}
+            <OwnerTenantMatch
+              ownerName={listing.ownerName}
+              ownerProfile={listing.ownerProfile}
+            />
           </div>
 
           {/* Right: contact card */}
