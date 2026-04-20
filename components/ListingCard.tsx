@@ -1,10 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Bath, BedDouble, Maximize2, MapPin } from "lucide-react";
+import dynamic from "next/dynamic";
+import { Bath, BedDouble, Maximize2, MapPin, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Listing } from "@/data/listings";
+
+const MatchBadge = dynamic(
+  () => import("./MatchBadge").then((m) => m.MatchBadge),
+  { ssr: false }
+);
 
 function furnishingLabel(f: Listing["furnishing"]) {
   return { "unfurnished": "Unfurnished", "semi-furnished": "Semi", "fully-furnished": "Fully Furnished" }[f];
@@ -62,6 +68,15 @@ export default function ListingCard({ listing }: { listing: Listing }) {
           <span className="flex items-center gap-1">
             <Maximize2 className="h-3.5 w-3.5" />
             {listing.area} sqft
+          </span>
+        </div>
+
+        {/* Owner row */}
+        <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-3">
+          <User className="h-3 w-3 shrink-0" />
+          <span className="truncate">{listing.ownerName}</span>
+          <span className="ml-auto shrink-0">
+            <MatchBadge ownerProfile={listing.ownerProfile} />
           </span>
         </div>
 

@@ -11,6 +11,7 @@ import {
   ChevronLeft,
   CheckCircle2,
   MessageCircle,
+  LayoutGrid,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -90,27 +91,56 @@ export default function ListingDetailPage({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left: photos + details */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Photo gallery */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 rounded-xl overflow-hidden">
-              {listing.photos.map((photo, i) => (
-                <div
-                  key={i}
-                  className={`relative bg-gray-100 ${
-                    i === 0 && listing.photos.length > 1
-                      ? "sm:row-span-2 h-64 sm:h-80"
-                      : "h-48"
-                  } ${listing.photos.length === 1 ? "sm:col-span-2 h-72" : ""}`}
-                >
+            {/* Photo gallery — Airbnb-style hero grid */}
+            <div className="relative">
+              {listing.photos.length === 1 ? (
+                <div className="relative h-72 sm:h-96 rounded-xl overflow-hidden bg-gray-100">
                   <Image
-                    src={photo}
-                    alt={`${listing.title} — photo ${i + 1}`}
+                    src={listing.photos[0]}
+                    alt={listing.title}
                     fill
                     className="object-cover"
-                    priority={i === 0}
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                    sizes="100vw"
                   />
                 </div>
-              ))}
+              ) : (
+                <div className="grid grid-cols-4 grid-rows-2 gap-2 h-64 sm:h-[420px] rounded-xl overflow-hidden">
+                  {/* Main large photo — spans left half, full height */}
+                  <div className="col-span-2 row-span-2 relative bg-gray-100">
+                    <Image
+                      src={listing.photos[0]}
+                      alt={`${listing.title} — main`}
+                      fill
+                      className="object-cover hover:scale-[1.02] transition-transform duration-500"
+                      priority
+                      sizes="50vw"
+                    />
+                  </div>
+                  {/* Secondary photos — 2×2 grid on right */}
+                  {listing.photos.slice(1, 5).map((photo, i) => (
+                    <div key={i} className="relative bg-gray-100 overflow-hidden">
+                      <Image
+                        src={photo}
+                        alt={`${listing.title} — photo ${i + 2}`}
+                        fill
+                        className="object-cover hover:scale-[1.04] transition-transform duration-500"
+                        sizes="25vw"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* "Show all photos" button */}
+              {listing.photos.length > 1 && (
+                <div className="absolute bottom-3 right-3">
+                  <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-sm text-xs font-semibold px-3 py-2 rounded-lg shadow-md border border-white/60 text-gray-700">
+                    <LayoutGrid className="h-3.5 w-3.5" />
+                    {listing.photos.length} photos
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Title & location */}
