@@ -17,19 +17,80 @@ interface Props {
   ownerProfile: OwnerProfile;
 }
 
+const RING_RADIUS = 52;
+const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
+
 function ScoreRing({ score }: { score: number }) {
   const color =
-    score >= 75 ? "text-green-600" : score >= 50 ? "text-yellow-500" : "text-red-500";
+    score >= 75 ? "#16a34a" : score >= 50 ? "#ca8a04" : "#dc2626";
+  const trackColor =
+    score >= 75 ? "#bbf7d0" : score >= 50 ? "#fef08a" : "#fecaca";
   const bgColor =
     score >= 75 ? "bg-green-50" : score >= 50 ? "bg-yellow-50" : "bg-red-50";
-  const label = score >= 75 ? "Great Match" : score >= 50 ? "Partial Match" : "Poor Match";
+  const label =
+    score >= 75 ? "Great Match" : score >= 50 ? "Partial Match" : "Poor Match";
+  const sublabel =
+    score >= 75
+      ? "You're a strong fit for this listing"
+      : score >= 50
+      ? "You meet some of the owner's preferences"
+      : "Your preferences differ significantly";
+  const dashOffset = RING_CIRCUMFERENCE - (score / 100) * RING_CIRCUMFERENCE;
 
   return (
-    <div className={`flex items-center gap-4 rounded-xl p-4 ${bgColor}`}>
-      <div className={`text-4xl font-extrabold tabular-nums ${color}`}>{score}%</div>
-      <div>
-        <div className={`font-semibold ${color}`}>{label}</div>
-        <div className="text-xs text-muted-foreground">Compatibility with owner preferences</div>
+    <div className={`flex flex-col items-center gap-3 rounded-2xl p-6 ${bgColor}`}>
+      {/* Circular progress */}
+      <div className="relative">
+        <svg
+          width="140"
+          height="140"
+          viewBox="0 0 140 140"
+          className="-rotate-90"
+          aria-hidden="true"
+        >
+          {/* Track */}
+          <circle
+            cx="70"
+            cy="70"
+            r={RING_RADIUS}
+            fill="none"
+            stroke={trackColor}
+            strokeWidth="10"
+          />
+          {/* Progress arc */}
+          <circle
+            cx="70"
+            cy="70"
+            r={RING_RADIUS}
+            fill="none"
+            stroke={color}
+            strokeWidth="10"
+            strokeDasharray={RING_CIRCUMFERENCE}
+            strokeDashoffset={dashOffset}
+            strokeLinecap="round"
+            style={{ transition: "stroke-dashoffset 0.6s ease" }}
+          />
+        </svg>
+        {/* Score in center */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span
+            className="text-3xl font-extrabold tabular-nums leading-none"
+            style={{ color }}
+          >
+            {score}%
+          </span>
+          <span className="text-[11px] font-semibold mt-0.5 text-muted-foreground">
+            match
+          </span>
+        </div>
+      </div>
+
+      {/* Label */}
+      <div className="text-center">
+        <div className="font-bold text-base" style={{ color }}>
+          {label}
+        </div>
+        <div className="text-xs text-muted-foreground mt-0.5">{sublabel}</div>
       </div>
     </div>
   );

@@ -1,20 +1,19 @@
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { Bath, BedDouble, Maximize2, MapPin, User } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Listing } from "@/data/listings";
+
+const ListingCardGallery = dynamic(
+  () => import("./ListingCardGallery").then((m) => m.ListingCardGallery),
+  { ssr: false }
+);
 
 const MatchBadge = dynamic(
   () => import("./MatchBadge").then((m) => m.MatchBadge),
   { ssr: false }
 );
-
-function furnishingLabel(f: Listing["furnishing"]) {
-  return { "unfurnished": "Unfurnished", "semi-furnished": "Semi", "fully-furnished": "Fully Furnished" }[f];
-}
 
 export default function ListingCard({ listing }: { listing: Listing }) {
   const waMessage = encodeURIComponent(
@@ -24,25 +23,13 @@ export default function ListingCard({ listing }: { listing: Listing }) {
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow group">
-      <div className="relative h-48 bg-gray-100 overflow-hidden">
-        <Image
-          src={listing.photos[0]}
-          alt={listing.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-        <div className="absolute top-3 left-3">
-          <Badge className="bg-white text-foreground shadow-sm">
-            {listing.bedrooms === 1 && listing.type === "studio" ? "Studio" : `${listing.bedrooms} BHK`}
-          </Badge>
-        </div>
-        <div className="absolute top-3 right-3">
-          <Badge variant="secondary" className="bg-white/90 text-foreground shadow-sm text-xs">
-            {furnishingLabel(listing.furnishing)}
-          </Badge>
-        </div>
-      </div>
+      <ListingCardGallery
+        photos={listing.photos}
+        title={listing.title}
+        bedrooms={listing.bedrooms}
+        type={listing.type}
+        furnishing={listing.furnishing}
+      />
 
       <CardContent className="p-4">
         <div className="flex items-start gap-1 text-xs text-muted-foreground mb-1">
