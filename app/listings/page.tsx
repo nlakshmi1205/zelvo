@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { listings, techParks } from "@/data/listings";
-import ListingCard from "@/components/ListingCard";
+import { ListingsGrid } from "@/components/ListingsGrid";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -16,6 +16,7 @@ interface SearchParams {
   minPrice?: string;
   maxPrice?: string;
   furnishing?: string;
+  gatedCommunity?: string;
   q?: string;
   sort?: string;
 }
@@ -36,6 +37,7 @@ function filterAndSort(params: SearchParams) {
   if (params.minPrice) results = results.filter((l) => l.price >= Number(params.minPrice));
   if (params.maxPrice) results = results.filter((l) => l.price <= Number(params.maxPrice));
   if (params.furnishing) results = results.filter((l) => l.furnishing === params.furnishing);
+  if (params.gatedCommunity === "yes") results = results.filter((l) => l.gatedCommunity);
 
   if (params.sort === "price_asc") results.sort((a, b) => a.price - b.price);
   else if (params.sort === "price_desc") results.sort((a, b) => b.price - a.price);
@@ -128,6 +130,19 @@ export default function ListingsPage({
                 </select>
               </div>
 
+              {/* Gated Community */}
+              <div>
+                <label className="text-sm font-semibold block mb-1.5">Gated Community</label>
+                <select
+                  name="gatedCommunity"
+                  defaultValue={searchParams.gatedCommunity ?? ""}
+                  className="w-full border rounded-md px-3 py-2 text-sm bg-white"
+                >
+                  <option value="">Any</option>
+                  <option value="yes">Gated Only</option>
+                </select>
+              </div>
+
               {/* Price range */}
               <div>
                 <label className="text-sm font-semibold block mb-1.5">
@@ -169,11 +184,7 @@ export default function ListingsPage({
                 </Button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                {results.map((listing) => (
-                  <ListingCard key={listing.id} listing={listing} />
-                ))}
-              </div>
+              <ListingsGrid listings={results} />
             )}
           </div>
         </div>

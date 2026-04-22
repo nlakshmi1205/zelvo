@@ -26,6 +26,7 @@ export interface Listing {
   availableFrom: string;
   description: string;
   ownerProfile: OwnerProfile;
+  gatedCommunity: boolean;
 }
 
 export const listings: Listing[] = [
@@ -55,6 +56,7 @@ export const listings: Listing[] = [
     description:
       "Prime 2BHK in the startup hub of Koramangala 4th Block. Fully furnished with AC in all rooms. Walking distance to Forum Mall, Café Coffee Day, and top restaurants.",
     ownerProfile: { petFriendly: false, vegOnly: true, religion: "any", tenantPreference: "any" },
+    gatedCommunity: true,
   },
   {
     id: "blr-002",
@@ -81,6 +83,7 @@ export const listings: Listing[] = [
     description:
       "Large 3BHK ideal for families or flatmates. Semi-furnished with wardrobes and kitchen fittings. Close to IIMB, National Games Village, and Outer Ring Road.",
     ownerProfile: { petFriendly: true, vegOnly: false, religion: "any", tenantPreference: "family" },
+    gatedCommunity: true,
   },
   {
     id: "blr-003",
@@ -107,6 +110,7 @@ export const listings: Listing[] = [
     description:
       "Compact, fully-furnished studio in the heart of Koramangala. Perfect for solo professionals. High-speed wifi included. Walking distance to Indiranagar and central Koramangala.",
     ownerProfile: { petFriendly: false, vegOnly: false, religion: "any", tenantPreference: "any" },
+    gatedCommunity: false,
   },
   // Bangalore — HSR Layout
   {
@@ -140,6 +144,7 @@ export const listings: Listing[] = [
     description:
       "Well-maintained 2BHK in HSR Layout with excellent connectivity to Sarjapur Road and Electronic City. Great for tech professionals. Nearby supermarkets, hospitals, and parks.",
     ownerProfile: { petFriendly: true, vegOnly: true, religion: "hindu", tenantPreference: "any" },
+    gatedCommunity: true,
   },
   {
     id: "blr-005",
@@ -166,6 +171,7 @@ export const listings: Listing[] = [
     description:
       "Ground floor 1BHK with a small garden-facing balcony in a quiet lane in HSR Layout Sector 2. Unfurnished, newly painted, ready to move in.",
     ownerProfile: { petFriendly: false, vegOnly: true, religion: "any", tenantPreference: "married" },
+    gatedCommunity: false,
   },
   {
     id: "blr-006",
@@ -192,6 +198,7 @@ export const listings: Listing[] = [
     description:
       "Elegant independent villa in HSR Layout Sector 6 with a private garden and covered parking for 2 cars. Fully furnished with premium furniture. Rare rental opportunity.",
     ownerProfile: { petFriendly: true, vegOnly: false, religion: "any", tenantPreference: "family" },
+    gatedCommunity: false,
   },
   // Bangalore — Indiranagar
   {
@@ -219,6 +226,7 @@ export const listings: Listing[] = [
     description:
       "Stylish 2BHK on the coveted 12th Main in Indiranagar. Steps from top cafés, restaurants, and the metro. Premium building with rooftop access. Ideal for young professionals.",
     ownerProfile: { petFriendly: false, vegOnly: false, religion: "any", tenantPreference: "any" },
+    gatedCommunity: true,
   },
   {
     id: "blr-008",
@@ -245,6 +253,7 @@ export const listings: Listing[] = [
     description:
       "Convenient 1BHK just 200m from Indiranagar metro station. Semi-furnished with wardrobe and kitchen cabinets. Perfect base for professionals who commute frequently.",
     ownerProfile: { petFriendly: false, vegOnly: true, religion: "any", tenantPreference: "any" },
+    gatedCommunity: false,
   },
   {
     id: "blr-009",
@@ -279,6 +288,7 @@ export const listings: Listing[] = [
     description:
       "Spectacular penthouse with private terrace and 360° city views. Premium furnishings, Italian marble flooring, modular kitchen. The ultimate Indiranagar address.",
     ownerProfile: { petFriendly: true, vegOnly: false, religion: "any", tenantPreference: "any" },
+    gatedCommunity: true,
   },
   {
     id: "blr-010",
@@ -305,6 +315,7 @@ export const listings: Listing[] = [
     description:
       "Clean and spacious 2BHK on the 100ft Road in Indiranagar. Unfurnished, freshly painted with new tiling. Ready to move in with your own furniture.",
     ownerProfile: { petFriendly: false, vegOnly: false, religion: "hindu", tenantPreference: "married" },
+    gatedCommunity: false,
   },
 ];
 

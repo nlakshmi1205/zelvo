@@ -9,16 +9,20 @@ import {
   PROFILE_STORAGE_KEY,
   religionLabels,
   maritalStatusLabels,
+  genderLabels,
   type UserProfile,
   type MaritalStatus,
+  type Gender,
 } from "@/lib/profileUtils";
 import type { Religion } from "@/data/listings";
 
 const RELIGIONS: Religion[] = ["any", "hindu", "muslim", "christian", "jain", "sikh"];
 const MARITAL_STATUSES: MaritalStatus[] = ["single", "married", "family"];
+const GENDERS: Gender[] = ["male", "female", "other", "prefer_not_to_say"];
 
 const defaultProfile: UserProfile = {
   name: "",
+  gender: "prefer_not_to_say",
   isVeg: false,
   hasPets: false,
   religion: "any",
@@ -89,6 +93,26 @@ export default function ProfilePage() {
               value={profile.name}
               onChange={(e) => setProfile({ ...profile, name: e.target.value })}
             />
+          </div>
+
+          {/* Gender */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Gender</label>
+            <div className="grid grid-cols-2 gap-2">
+              {GENDERS.map((g) => (
+                <button
+                  key={g}
+                  onClick={() => setProfile({ ...profile, gender: g })}
+                  className={`py-2.5 rounded-lg border text-sm font-medium transition-colors ${
+                    profile.gender === g
+                      ? "bg-primary text-white border-primary"
+                      : "bg-white text-foreground hover:border-primary"
+                  }`}
+                >
+                  {genderLabels[g]}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Diet */}

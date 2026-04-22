@@ -1,9 +1,11 @@
 import type { OwnerProfile, Religion, TenantPreference } from "@/data/listings";
 
 export type MaritalStatus = "single" | "married" | "family";
+export type Gender = "male" | "female" | "other" | "prefer_not_to_say";
 
 export interface UserProfile {
   name: string;
+  gender: Gender;
   isVeg: boolean;
   hasPets: boolean;
   religion: Religion;
@@ -25,6 +27,13 @@ export const tenantPrefLabels: Record<TenantPreference, string> = {
   any: "Anyone",
   married: "Married Couples",
   family: "Families",
+};
+
+export const genderLabels: Record<Gender, string> = {
+  male: "Male",
+  female: "Female",
+  other: "Other",
+  prefer_not_to_say: "Prefer not to say",
 };
 
 export const maritalStatusLabels: Record<MaritalStatus, string> = {

@@ -15,7 +15,12 @@ const MatchBadge = dynamic(
   { ssr: false }
 );
 
-export default function ListingCard({ listing }: { listing: Listing }) {
+interface ListingCardProps {
+  listing: Listing;
+  onShowDetails?: () => void;
+}
+
+export default function ListingCard({ listing, onShowDetails }: ListingCardProps) {
   const waMessage = encodeURIComponent(
     `Hi, I saw your listing for "${listing.title}" on Zelvo. Is it still available?`
   );
@@ -37,11 +42,22 @@ export default function ListingCard({ listing }: { listing: Listing }) {
           <span>{listing.locality}, {listing.city}</span>
         </div>
 
-        <Link href={`/listings/${listing.id}`} className="hover:text-primary transition-colors">
-          <h3 className="font-semibold text-sm leading-snug line-clamp-2 mb-3">
-            {listing.title}
-          </h3>
-        </Link>
+        {onShowDetails ? (
+          <button
+            onClick={onShowDetails}
+            className="w-full text-left hover:text-primary transition-colors"
+          >
+            <h3 className="font-semibold text-sm leading-snug line-clamp-2 mb-3">
+              {listing.title}
+            </h3>
+          </button>
+        ) : (
+          <Link href={`/listings/${listing.id}`} className="hover:text-primary transition-colors">
+            <h3 className="font-semibold text-sm leading-snug line-clamp-2 mb-3">
+              {listing.title}
+            </h3>
+          </Link>
+        )}
 
         <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
           <span className="flex items-center gap-1">
