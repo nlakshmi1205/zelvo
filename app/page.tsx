@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Shield, MessageCircle, TrendingDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ListingCard from "@/components/ListingCard";
+import { FeaturedGrid } from "@/components/FeaturedGrid";
 import HeroSection from "@/components/HeroSection";
 import { listings } from "@/data/listings";
 
@@ -51,11 +51,7 @@ export default function Home() {
             <Link href="/listings">View All</Link>
           </Button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featured.map((listing) => (
-            <ListingCard key={listing.id} listing={listing} />
-          ))}
-        </div>
+        <FeaturedGrid listings={featured} />
         <div className="text-center mt-10">
           <Button asChild size="lg">
             <Link href="/listings">Browse All 10 Listings</Link>
