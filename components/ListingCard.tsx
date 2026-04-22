@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Bath, BedDouble, Maximize2, MapPin, User } from "lucide-react";
@@ -27,7 +29,10 @@ export default function ListingCard({ listing, onShowDetails }: ListingCardProps
   const waUrl = `https://wa.me/${listing.ownerWhatsApp}?text=${waMessage}`;
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow group">
+    <Card
+      className={`overflow-hidden hover:shadow-lg transition-shadow group${onShowDetails ? " cursor-pointer" : ""}`}
+      onClick={onShowDetails}
+    >
       <ListingCardGallery
         photos={listing.photos}
         title={listing.title}
@@ -43,14 +48,9 @@ export default function ListingCard({ listing, onShowDetails }: ListingCardProps
         </div>
 
         {onShowDetails ? (
-          <button
-            onClick={onShowDetails}
-            className="w-full text-left hover:text-primary transition-colors"
-          >
-            <h3 className="font-semibold text-sm leading-snug line-clamp-2 mb-3">
-              {listing.title}
-            </h3>
-          </button>
+          <h3 className="font-semibold text-sm leading-snug line-clamp-2 mb-3 hover:text-primary transition-colors">
+            {listing.title}
+          </h3>
         ) : (
           <Link href={`/listings/${listing.id}`} className="hover:text-primary transition-colors">
             <h3 className="font-semibold text-sm leading-snug line-clamp-2 mb-3">
@@ -90,7 +90,12 @@ export default function ListingCard({ listing, onShowDetails }: ListingCardProps
             </span>
             <span className="text-xs text-muted-foreground">/mo</span>
           </div>
-          <Button size="sm" asChild className="bg-green-600 hover:bg-green-700 text-white">
+          <Button
+            size="sm"
+            asChild
+            className="bg-green-600 hover:bg-green-700 text-white"
+            onClick={(e) => e.stopPropagation()}
+          >
             <a href={waUrl} target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>
