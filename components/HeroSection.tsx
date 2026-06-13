@@ -23,7 +23,7 @@ export default function HeroSection() {
             <span className="text-yellow-300">Zero Broker Fees</span>
           </h1>
           <p className="text-lg text-blue-100 mb-8 max-w-xl mx-auto">
-            Browse verified rental listings across Bangalore. Connect directly with owners via WhatsApp.
+            Browse verified rental listings across Bangalore. Chat directly with owners — no brokers, no phone numbers.
           </p>
           <form
             action="/listings"

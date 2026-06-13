@@ -10,11 +10,11 @@ import {
   Calendar,
   ChevronLeft,
   CheckCircle2,
-  MessageCircle,
   LayoutGrid,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ContactOwner } from "@/components/ContactOwner";
 import dynamic from "next/dynamic";
 import { listings, getListingById } from "@/data/listings";
 
@@ -57,11 +57,6 @@ export default function ListingDetailPage({
 }) {
   const listing = getListingById(params.id);
   if (!listing) notFound();
-
-  const waMessage = encodeURIComponent(
-    `Hi ${listing.ownerName}, I saw your listing for "${listing.title}" on Zelvo. Is it still available?`
-  );
-  const waUrl = `https://wa.me/${listing.ownerWhatsApp}?text=${waMessage}`;
 
   return (
     <main className="min-h-screen">
@@ -240,19 +235,15 @@ export default function ListingDetailPage({
                 <div className="text-xs text-muted-foreground">Property Owner</div>
               </div>
 
-              <Button
-                asChild
+              <ContactOwner
+                listing={listing}
+                label="Chat with owner"
                 size="lg"
-                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
-              >
-                <a href={waUrl} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Contact on WhatsApp
-                </a>
-              </Button>
+                className="w-full font-semibold"
+              />
 
               <p className="text-xs text-muted-foreground text-center">
-                Opens WhatsApp with a pre-filled message to the owner.
+                Start a chat with the owner — no broker, no phone number needed.
               </p>
 
               <div className="border-t pt-4 text-xs text-muted-foreground space-y-1">

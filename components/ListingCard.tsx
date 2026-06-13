@@ -3,8 +3,8 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Bath, BedDouble, Maximize2, MapPin, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ContactOwner } from "./ContactOwner";
 import type { Listing } from "@/data/listings";
 
 const ListingCardGallery = dynamic(
@@ -23,11 +23,6 @@ interface ListingCardProps {
 }
 
 export default function ListingCard({ listing, onShowDetails }: ListingCardProps) {
-  const waMessage = encodeURIComponent(
-    `Hi, I saw your listing for "${listing.title}" on Zelvo. Is it still available?`
-  );
-  const waUrl = `https://wa.me/${listing.ownerWhatsApp}?text=${waMessage}`;
-
   return (
     <Card
       className={`overflow-hidden hover:shadow-lg transition-shadow group${onShowDetails ? " cursor-pointer" : ""}`}
@@ -90,16 +85,7 @@ export default function ListingCard({ listing, onShowDetails }: ListingCardProps
             </span>
             <span className="text-xs text-muted-foreground">/mo</span>
           </div>
-          <Button
-            size="sm"
-            asChild
-            className="bg-green-600 hover:bg-green-700 text-white"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <a href={waUrl} target="_blank" rel="noopener noreferrer">
-              WhatsApp
-            </a>
-          </Button>
+          <ContactOwner listing={listing} label="Chat" size="sm" stopPropagation />
         </div>
       </CardContent>
     </Card>

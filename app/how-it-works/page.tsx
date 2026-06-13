@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "How It Works",
   description:
-    "Zelvo makes renting easy — browse verified listings, WhatsApp the owner directly, and move in without paying a single rupee to a broker.",
+    "Zelvo makes renting easy — browse verified listings, chat with the owner directly, and move in without paying a single rupee to a broker.",
 };
 
 const steps = [
@@ -20,8 +20,8 @@ const steps = [
   {
     icon: MessageCircle,
     number: "02",
-    title: "Contact the Owner on WhatsApp",
-    desc: "One tap opens WhatsApp with a pre-filled message to the owner. No middlemen, no commissions. Talk directly, schedule a visit, and negotiate the rent on your terms.",
+    title: "Chat with the Owner",
+    desc: "One tap opens a chat with the owner — right here on Zelvo, no phone number needed. No middlemen, no commissions. Message directly, schedule a visit, and negotiate the rent on your terms.",
     color: "bg-green-50 text-green-600",
   },
   {
@@ -40,11 +40,11 @@ const faqs = [
   },
   {
     q: "How do you ensure listings are genuine?",
-    a: "All listings are submitted directly by property owners. We are building a verification layer that cross-checks against owner ID and utility bills. In the meantime, every listing has the owner's WhatsApp number so you can speak to them directly before visiting.",
+    a: "All listings are submitted directly by property owners. We are building a verification layer that cross-checks against owner ID and utility bills. In the meantime, every listing lets you chat with the owner directly so you can speak to them before visiting.",
   },
   {
     q: "What cities do you cover?",
-    a: "We currently have verified listings across Bangalore — Koramangala, HSR Layout, Indiranagar, and more. More localities are coming soon. If you're a property owner in Bangalore, reach out to us on WhatsApp.",
+    a: "We currently have verified listings across Bangalore — Koramangala, HSR Layout, Indiranagar, and more. More localities are coming soon. If you're a property owner in Bangalore, reach out to us through the in-app chat.",
   },
   {
     q: "What are SmartLocks?",
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: "Can I list my property on Zelvo?",
-    a: "Yes! If you are a property owner looking to rent without paying broker commissions, we want to work with you. Tap 'Contact on WhatsApp' on any listing to reach our team.",
+    a: "Yes! If you are a property owner looking to rent without paying broker commissions, we want to work with you. Tap 'Chat with owner' on any listing to reach our team.",
   },
 ];
 

@@ -23,8 +23,8 @@ export default function Footer() {
               <span>Zelvo</span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Zero-broker rentals in Bangalore. Connect directly with owners on
-              WhatsApp.
+              Zero-broker rentals in Bangalore. Chat directly with owners,
+              right here on Zelvo.
             </p>
           </div>
 

@@ -10,7 +10,7 @@ const featured = listings.slice(0, 6);
 const trustStats = [
   { icon: TrendingDown, label: "Zero Broker Fee", sub: "Save 1–2 months rent" },
   { icon: Shield, label: "Verified Listings", sub: "Every listing is owner-posted" },
-  { icon: MessageCircle, label: "Direct on WhatsApp", sub: "Talk straight to the owner" },
+  { icon: MessageCircle, label: "Direct Chat", sub: "Message owners in-app" },
 ];
 
 export default function Home() {
@@ -69,7 +69,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left mb-8">
             {[
               { step: "1", title: "Browse Listings", desc: "Filter by city, locality, BHK, and budget." },
-              { step: "2", title: "WhatsApp Owner", desc: "One tap to open WhatsApp with a pre-filled message." },
+              { step: "2", title: "Chat with Owner", desc: "One tap to start a chat with the owner — right on Zelvo." },
               { step: "3", title: "Visit & Move In", desc: "Schedule a visit directly. No broker, no commission." },
             ].map(({ step, title, desc }) => (
               <div key={step} className="flex gap-3">

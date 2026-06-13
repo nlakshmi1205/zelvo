@@ -12,13 +12,13 @@ import {
   MapPin,
   Calendar,
   CheckCircle2,
-  MessageCircle,
   ExternalLink,
   User,
   Shield,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ContactOwner } from "./ContactOwner";
 import type { Listing } from "@/data/listings";
 import {
   PROFILE_STORAGE_KEY,
@@ -81,11 +81,6 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
       }
     } catch {}
   }, [listing.ownerProfile]);
-
-  const waMessage = encodeURIComponent(
-    `Hi ${listing.ownerName}, I saw your listing for "${listing.title}" on Zelvo. Is it still available?`
-  );
-  const waUrl = `https://wa.me/${listing.ownerWhatsApp}?text=${waMessage}`;
 
   return (
     <div
@@ -272,12 +267,7 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
               </div>
             </div>
             <div className="flex gap-2 sm:ml-auto">
-              <Button asChild size="sm" className="bg-green-600 hover:bg-green-700 text-white">
-                <a href={waUrl} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="h-4 w-4 mr-1.5" />
-                  WhatsApp
-                </a>
-              </Button>
+              <ContactOwner listing={listing} label="Chat with owner" size="sm" />
               <Button asChild size="sm" variant="outline">
                 <Link href={`/listings/${listing.id}`} onClick={onClose}>
                   <ExternalLink className="h-4 w-4 mr-1.5" />
